@@ -26,7 +26,7 @@ RUN apt-get update && \
     apt-get -y clean && \
     rm -r /var/lib/apt/lists/* # 150901
 
-RUN git lfs install
+#RUN git lfs install
 
 # add missing SSL certificate https://bugs.launchpad.net/ubuntu/+source/ca-certificates/+bug/1261855
 RUN curl -o /usr/local/share/ca-certificates/como.crt \
