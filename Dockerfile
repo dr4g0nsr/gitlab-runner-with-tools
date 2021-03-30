@@ -13,6 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
             curl \
             nano \
             sshpass \
+            php-cli \
         --no-install-recommends && \
     apt-get -y clean && \
     rm -r /var/lib/apt/lists/*
