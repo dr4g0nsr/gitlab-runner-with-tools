@@ -45,8 +45,6 @@ RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar &
 # SSH Key
 RUN DEBIAN_FRONTEND=noninteractive mkdir /home/gitlab-runner/.ssh && ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
 
-USER root
-
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
 
 RUN git config --global user.email "ci-runner@example.com" && \
