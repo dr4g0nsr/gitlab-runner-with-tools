@@ -43,7 +43,7 @@ RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar &
 USER gitlab-runner
 
 # SSH Key
-RUN ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null
+RUN DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y 2>&1 >/dev/null
 
 USER root
 
