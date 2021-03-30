@@ -17,14 +17,14 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y clean && \
     rm -r /var/lib/apt/lists/*
 
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+#RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 
-RUN apt-get update && \
-    apt-get -y install \
-            git-lfs \
-        --no-install-recommends && \
-    apt-get -y clean && \
-    rm -r /var/lib/apt/lists/* # 150901
+#RUN apt-get update && \
+#    apt-get -y install \
+#            git-lfs \
+#        --no-install-recommends && \
+#    apt-get -y clean && \
+#    rm -r /var/lib/apt/lists/* # 150901
 
 #RUN git lfs install
 
