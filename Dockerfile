@@ -17,17 +17,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y clean && \
     rm -r /var/lib/apt/lists/*
 
-#RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-
-#RUN apt-get update && \
-#    apt-get -y install \
-#            git-lfs \
-#        --no-install-recommends && \
-#    apt-get -y clean && \
-#    rm -r /var/lib/apt/lists/* # 150901
-
-#RUN git lfs install
-
 # add missing SSL certificate https://bugs.launchpad.net/ubuntu/+source/ca-certificates/+bug/1261855
 RUN curl -o /usr/local/share/ca-certificates/como.crt \
       https://gist.githubusercontent.com/schmunk42/5abeaf7ca468dc259325/raw/2a8e19139d29aeea2871206576e264ef2d45a46d/comodorsadomainvalidationsecureserverca.crt \
