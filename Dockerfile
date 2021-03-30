@@ -40,10 +40,10 @@ RUN ln -s /usr/local/bin/docker-${DOCKER_VERSION_CURRENT} /usr/local/bin/docker 
 # PHP stuff
 RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar && chmod +x phpunit && mv phpunit /usr/bin/
 
-USER gitlab-runner
+#USER gitlab-runner
 
 # SSH Key
-RUN DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa <<<y
+RUN DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa <<<y
 
 USER root
 
