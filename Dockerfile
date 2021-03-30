@@ -1,8 +1,8 @@
-FROM gitlab/gitlab-runner:v11.10.1
+FROM gitlab/gitlab-runner:v13.10.0
 
 ENV TERM=linux
-ENV DOCKER_VERSION_CURRENT=18.09.6
-ENV COMPOSE_VERSION_CURRENT=1.24.0
+ENV DOCKER_VERSION_CURRENT=19.03.8
+ENV COMPOSE_VERSION_CURRENT=1.28.6
     
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
