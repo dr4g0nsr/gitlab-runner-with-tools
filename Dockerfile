@@ -3,6 +3,7 @@ FROM gitlab/gitlab-runner:v13.10.0
 ENV TERM=linux
 ENV DOCKER_VERSION_CURRENT=19.03.8
 ENV COMPOSE_VERSION_CURRENT=1.28.6
+ENV PHPUNIT=7
     
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
@@ -35,6 +36,9 @@ RUN curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSIO
 # Link default versions
 RUN ln -s /usr/local/bin/docker-${DOCKER_VERSION_CURRENT} /usr/local/bin/docker && \
     ln -s /usr/local/bin/docker-compose-${COMPOSE_VERSION_CURRENT} /usr/local/bin/docker-compose
+
+# PHP stuff
+RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar && chmod +x phpunit && mv phpunit /usr/bin/
 
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
 
