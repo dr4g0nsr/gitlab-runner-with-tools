@@ -40,6 +40,13 @@ RUN ln -s /usr/local/bin/docker-${DOCKER_VERSION_CURRENT} /usr/local/bin/docker 
 # PHP stuff
 RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar && chmod +x phpunit && mv phpunit /usr/bin/
 
+USER gitlab-runner
+
+# SSH Key
+RUN ssh-keygen -t rsa -N ''
+
+USER root
+
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
 
 RUN git config --global user.email "ci-runner@example.com" && \
