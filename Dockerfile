@@ -43,7 +43,8 @@ RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar &
 #USER gitlab-runner
 
 # SSH Key
-RUN DEBIAN_FRONTEND=noninteractive mkdir /home/gitlab-runner/.ssh && ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
+RUN mkdir /home/gitlab-runner/.ssh && chown gitlab-runner:gitlab-runner /home/gitlab-runner/.ssh
+RUN DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
 
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
 
