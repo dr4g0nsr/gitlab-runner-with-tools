@@ -2,6 +2,7 @@
 Gitlab runner with ssh and php preinstalled
 
 ## Docker-compose block
+```docker
   runner:
     image: dr4g0nsr/gitlab-runner:latest
     restart: always
@@ -11,6 +12,7 @@ Gitlab runner with ssh and php preinstalled
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data/gitlab-runner-config:/etc/gitlab-runner
       - ./data/gitlab-runner-home:/home/gitlab-runner
+```
 
 In /data/gitlab-runner-config there is toml with generated config.
 
