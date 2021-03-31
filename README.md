@@ -13,7 +13,9 @@ Gitlab runner with ssh and php preinstalled
       - ./data/gitlab-runner-home:/home/gitlab-runner
 
 In /data/gitlab-runner-config there is toml with generated config.
+
 In /data/gitlab-runner-home there is a workdir with ssh keys in .ssh. Use this to deploy to production, locally you will find it in ./data/gitlab-runner-home/.ssh.
+
 Keys are generated on first start and will regenerate if deleted or volume changed (missing in any case).
 
 ## .gitlab-ci.yml deployment
