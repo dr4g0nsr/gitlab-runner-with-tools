@@ -21,11 +21,10 @@ fi
 # launch gitlab-runner passing all arguments
 exec gitlab-runner "$@"
 
-
-USER gitlab-runner
-
 # SSH Key
-RUN mkdir /home/gitlab-runner/.ssh
-#RUN DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
-RUN DEBIAN_FRONTEND=noninteractive echo "y" | ssh-keygen -q -t ed25519 -f /home/gitlab-runner/.ssh/id_rsa -N ''
-#ssh-keygen -q -t rsa -N '' <<< ""$'\n'"y" 2>&1 >/dev/null
+if [ ! -d '/home/gitlab-runner/.ssh' ]; then
+  mkdir /home/gitlab-runner/.ssh
+  #DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
+  DEBIAN_FRONTEND=noninteractive echo "y" | ssh-keygen -q -t ed25519 -f /home/gitlab-runner/.ssh/id_rsa -N ''
+  #ssh-keygen -q -t rsa -N '' <<< ""$'\n'"y" 2>&1 >/dev/null
+fi
