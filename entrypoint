@@ -24,6 +24,10 @@ if [ ! -d '/home/gitlab-runner/.ssh' ]; then
   #DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
   DEBIAN_FRONTEND=noninteractive echo "y" | ssh-keygen -q -t ed25519 -f /home/gitlab-runner/.ssh/id_rsa -N ''
   #ssh-keygen -q -t rsa -N '' <<< ""$'\n'"y" 2>&1 >/dev/null
+  if [ -d '/root/.ssh' ]; then
+    rm -rf /root/.ssh
+  fi
+  ln -s /home/gitlab-runner/.ssh /root/.ssh
 fi
 
 # launch gitlab-runner passing all arguments
