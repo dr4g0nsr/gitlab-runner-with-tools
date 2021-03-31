@@ -41,6 +41,7 @@ RUN ln -s /usr/local/bin/docker-${DOCKER_VERSION_CURRENT} /usr/local/bin/docker 
 RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar && chmod +x phpunit && mv phpunit /usr/bin/
 
 COPY entrypoint /entrypoint
+RUN chmod 777 /entrypoint
 
 VOLUME  /home/gitlab-runner
 VOLUME  /etc/gitlab-runner
