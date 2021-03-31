@@ -1,2 +1,2 @@
 # gitlab-runner-with-tools
-Gitlab runner with all needed tools for deploy
+Gitlab runner with ssh and php preinstalled
