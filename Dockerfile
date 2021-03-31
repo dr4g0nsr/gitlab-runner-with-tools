@@ -50,6 +50,9 @@ RUN DEBIAN_FRONTEND=noninteractive echo "y" | ssh-keygen -q -t ed25519 -f /home/
 
 USER root
 
+VOLUME  /home/gitlab-runner
+VOLUME  /etc/gitlab-runner
+
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
 
 RUN git config --global user.email "ci-runner@example.com" && \
