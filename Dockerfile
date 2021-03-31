@@ -41,11 +41,14 @@ RUN ln -s /usr/local/bin/docker-${DOCKER_VERSION_CURRENT} /usr/local/bin/docker 
 RUN cd /tmp && wget -O phpunit https://phar.phpunit.de/phpunit-${PHPUNIT}.phar && chmod +x phpunit && mv phpunit /usr/bin/
 
 USER gitlab-runner
+
 # SSH Key
 RUN mkdir /home/gitlab-runner/.ssh
 #RUN DEBIAN_FRONTEND=noninteractive ssh-keygen -q -t rsa -N '' -f /home/gitlab-runner/.ssh/id_rsa
 RUN DEBIAN_FRONTEND=noninteractive echo "y" | ssh-keygen -q -t ed25519 -f /home/gitlab-runner/.ssh/id_rsa -N ''
 #ssh-keygen -q -t rsa -N '' <<< ""$'\n'"y" 2>&1 >/dev/null
+
+USER root
 
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
 
